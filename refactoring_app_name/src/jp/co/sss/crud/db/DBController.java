@@ -78,11 +78,11 @@ public class DBController {
 			System.out.println("");
 		} finally {
 			// ResultSetをクローズ
-			DBManager.close(resultSet);
+			DBManager.closeResultSet(resultSet);
 			// Statementをクローズ
-			DBManager.close(preparedStatement);
+			DBManager.closePreparedStatement(preparedStatement);
 			// DBとの接続を切断
-			DBManager.close(connection);
+			DBManager.closeDBConnection(connection);
 		}
 	}
 
@@ -158,11 +158,11 @@ public class DBController {
 
 		} finally {
 			// クローズ処理
-			DBManager.close(resultSet);
+			DBManager.closeResultSet(resultSet);
 			// Statementをクローズ
-			DBManager.close(preparedStatement);
+			DBManager.closePreparedStatement(preparedStatement);
 			// DBとの接続を切断
-			DBManager.close(connection);
+			DBManager.closeDBConnection(connection);
 		}
 	}
 
@@ -243,11 +243,11 @@ public class DBController {
 			System.out.println("");
 		} finally {
 			// クローズ処理
-			DBManager.close(resultSet);
+			DBManager.closeResultSet(resultSet);
 			// Statementをクローズ
-			DBManager.close(preparedStatement);
+			DBManager.closePreparedStatement(preparedStatement);
 			// DBとの接続を切断
-			DBManager.close(connection);
+			DBManager.closeDBConnection(connection);
 		}
 	}
 
@@ -287,8 +287,8 @@ public class DBController {
 			// 登録完了メッセージを出力
 			System.out.println("社員情報を登録しました");
 		} finally {
-			DBManager.close(preparedStatement);
-			DBManager.close(connection);
+			DBManager.closePreparedStatement(preparedStatement);
+			DBManager.closeDBConnection(connection);
 		}
 	}
 
@@ -339,9 +339,9 @@ public class DBController {
 
 		} finally {
 			// クローズ処理
-			DBManager.close(preparedStatement);
+			DBManager.closePreparedStatement(preparedStatement);
 			// DBとの接続を切断
-			DBManager.close(connection);
+			DBManager.closeDBConnection(connection);
 		}
 	}
 
@@ -381,8 +381,8 @@ public class DBController {
 		finally {
 			// Statementをクローズ
 			try {
-				DBManager.close(preparedStatement);
-				DBManager.close(connection);
+				DBManager.closePreparedStatement(preparedStatement);
+				DBManager.closeDBConnection(connection);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
