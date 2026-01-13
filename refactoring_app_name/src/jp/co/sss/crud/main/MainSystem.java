@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.text.ParseException;
 
 import jp.co.sss.crud.db.DBController;
+import jp.co.sss.crud.util.ConstantMsg;
+import jp.co.sss.crud.util.ConstantValue;
 
 /**
  * 社員情報管理システム開始クラス 社員情報管理システムはこのクラスから始まる。<br/>
@@ -31,15 +33,8 @@ public class MainSystem {
 
 		do {
 			// メニューの表示
-			System.out.println("=== 社員管理システム ===");
-			System.out.println("1.全件表示");
-			System.out.println("2.社員名検索");
-			System.out.println("3.部署ID検索");
-			System.out.println("4.新規登録");
-			System.out.println("5.更新");
-			System.out.println("6.削除");
-			System.out.println("7.終了");
-			System.out.print("メニュー番号を入力してください：");
+			System.out.println(ConstantMsg.MENU);
+			System.out.print(ConstantMsg.INPUT_MENU_NUMBER);
 
 			// メニュー番号の入力
 			String menuNoStr = br.readLine();
@@ -47,46 +42,46 @@ public class MainSystem {
 
 			// 機能の呼出
 			switch (menuNo) {
-			case 1:
+			case ConstantValue.FIND_ALL:
 				// 全件表示機能の呼出
 				DBController.findAll();
 				break;
 
-			case 2:
+			case ConstantValue.FIND_BY_EMP_NAME:
 				// 社員名検索
-				System.out.print("社員名:");
+				System.out.print(ConstantMsg.INPUT_EMPNAME);
 
 				// 検索機能の呼出
 				DBController.findByEmpName();
 				break;
 
-			case 3:
+			case ConstantValue.FIND_BY_DEPT_ID:
 				// 検索する部署IDを入力
-				System.out.print("部署ID(1:営業部、2:経理部、3:総務部)を入力してください:");
+				System.out.print(ConstantMsg.INPUT_DEPTID_MSG);
 				String inputDeptId = br.readLine();
 
 				// 検索機能の呼出
 				DBController.findByDeptId(inputDeptId);
 				break;
 
-			case 4:
+			case ConstantValue.INSERT:
 				// 登録する値を入力
-				System.out.print("社員名:");
+				System.out.print(ConstantMsg.INPUT_EMPNAME);
 				String insertEmpName = br.readLine();
-				System.out.print("性別(0:その他, 1:男性, 2:女性, 9:回答なし):");
+				System.out.print(ConstantMsg.INPUT_GENDER);
 				String insertGender = br.readLine();
-				System.out.print("生年月日(西暦年/月/日):");
+				System.out.print(ConstantMsg.INPUT_BIRTHDAY);
 				String insertBirthday = br.readLine();
-				System.out.print("部署ID(1:営業部、2:経理部、3:総務部):");
+				System.out.print(ConstantMsg.INPUT_DEPTID);
 				String insertDeptId = br.readLine();
 
 				// 登録機能の呼出
 				DBController.insert(insertEmpName, insertGender, insertBirthday, insertDeptId);
 				break;
 
-			case 5:
+			case ConstantValue.UPDATE:
 				// 更新する社員IDを入力
-				System.out.print("更新する社員の社員IDを入力してください：");
+				System.out.print(ConstantMsg.UPDATE_EMPID_MSG);
 
 				// 更新する値を入力する
 				String updateEmpId = br.readLine();
@@ -94,20 +89,20 @@ public class MainSystem {
 
 				// 更新機能の呼出
 				DBController.update(updateEmpId);
-				System.out.println("社員情報を更新しました");
+				System.out.println(ConstantMsg.EMPLOYEE_UPDATE_COMPLETE);
 
 				break;
 
-			case 6:
+			case ConstantValue.DELETE:
 				// 削除する社員IDを入力
-				System.out.print("削除する社員の社員IDを入力してください：");
+				System.out.print(ConstantMsg.DELETE_DEPTID_MSG);
 
 				// 削除機能の呼出
 				DBController.delete();
 				break;
 
 			}
-		} while (menuNo != 7);
-		System.out.println("システムを終了します。");
+		} while (menuNo != ConstantValue.SHUTDOWN);
+		System.out.println(ConstantMsg.SYSTEM_SHUTDOWN);
 	}
 }

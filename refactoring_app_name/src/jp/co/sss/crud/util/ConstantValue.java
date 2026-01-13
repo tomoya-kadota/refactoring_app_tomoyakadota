@@ -11,11 +11,23 @@ public class ConstantValue {
 	/** インスタンス化を禁止 */
 	private ConstantValue() {
 	}
-
+	// ***** メニュー番号 *****
+	/** メニュー番号：１（全件表示） */
+	public static final int FIND_ALL = 1;
+	/** メニュー番号：２（社員名検索） */
+	public static final int FIND_BY_EMP_NAME = 2;
+	/** メニュー番号：３（部署ID検索） */
+	public static final int FIND_BY_DEPT_ID = 3;
+	/** メニュー番号：４（新規登録） */
+	public static final int INSERT = 4;
+	/** メニュー番号：５（更新） */
+	public static final int UPDATE = 5;
+	/** メニュー番号：６（削除） */
+	public static final int DELETE = 6;
+	/** メニュー番号：７（終了） */
+	public static final int SHUTDOWN = 7;
+	
 	// ***** 検索結果出力に関連する文字列 *****
-
-	/** ヘッダー */
-	public static final String RESULT_HEADER = "社員ID\t社員名\t性別\t生年月日\t部署名";
 
 	/** 社員ID */
 	public static final String EMP_ID = "emp_id";
@@ -58,16 +70,6 @@ public class ConstantValue {
 	/** 部署名 総務部 選択肢番号 */
 	public static final int DEPT_GENERAL_NUMBER = 3;
 
-	// ***** 登録、更新処理用の出力文字列 *****
-
-	/** 更新 社員名 */
-	public static final String UPDATE_EMPNAME = "社員名：";
-	/** 更新 性別 */
-	public static final String UPDATE_GENDER = "性別(0:回答しない, 1:男性, 2:女性, 9:その他):";
-	/** 更新 社員名 */
-	public static final String UPDATE_BIRTHDAY = "生年月日(西暦年/月/日)：";
-	/** 更新 部署ID */
-	public static final String UPDATE_DEPTID = "部署ID(1：営業部、2：経理部、3：総務部)：";
 
 	// ***** SimpleDateFormatを用いた日付形式の指定用文字列 *****
 

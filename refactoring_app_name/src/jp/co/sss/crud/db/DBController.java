@@ -54,7 +54,7 @@ public class DBController {
 			}
 
 			// レコードを出力
-			System.out.println(ConstantValue.RESULT_HEADER);
+			System.out.println(ConstantMsg.RESULT_HEADER);
 			while (resultSet.next()) {
 				System.out.print(resultSet.getString(ConstantValue.EMP_ID) + "\t");
 				System.out.print(resultSet.getString(ConstantValue.EMP_NAME) + "\t");
@@ -126,7 +126,7 @@ public class DBController {
 				return;
 			}
 
-			System.out.println(ConstantValue.RESULT_HEADER);
+			System.out.println(ConstantMsg.RESULT_HEADER);
 			while (resultSet.next()) {
 				System.out.print(resultSet.getString(ConstantValue.EMP_ID));
 				System.out.print("\t");
@@ -203,7 +203,7 @@ public class DBController {
 				return;
 			}
 
-			System.out.println(ConstantValue.RESULT_HEADER);
+			System.out.println(ConstantMsg.RESULT_HEADER);
 			while (resultSet.next()) {
 				System.out.print(resultSet.getString(ConstantValue.EMP_ID));
 				System.out.print("\t");
@@ -315,17 +315,17 @@ public class DBController {
 			// ステートメントの作成
 			preparedStatement = connection.prepareStatement(ConstantSQL.SQL_UPDATE);
 
-			System.out.print(ConstantValue.UPDATE_EMPNAME);
+			System.out.print(ConstantMsg.INPUT_EMPNAME);
 			String emp_name = br.readLine();
 			// 性別を入力
-			System.out.print(ConstantValue.UPDATE_GENDER);
+			System.out.print(ConstantMsg.INPUT_GENDER);
 			String gender = br.readLine();
 			// 誕生日を入力
-			System.out.print(ConstantValue.UPDATE_BIRTHDAY);
+			System.out.print(ConstantMsg.INPUT_BIRTHDAY);
 			String birthday = br.readLine();
 
 			// 部署IDを入力
-			System.out.print(ConstantValue.UPDATE_DEPTID);
+			System.out.print(ConstantMsg.INPUT_DEPTID);
 			String deptId = br.readLine();
 
 			// 入力値をバインド
