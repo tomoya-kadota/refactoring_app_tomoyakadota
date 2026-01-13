@@ -25,12 +25,20 @@ public class ConstantValue {
 	public static final String GENDER = "gender";
 	/** 性別 未回答 */
 	public static final String GENDER_NO_ANSWER = "回答なし";
+	/** 性別 未回答 選択肢番号 */
+	public static final int GENDER_NO_ANSWER_NUMBER = 0;
 	/** 性別 男性 */
 	public static final String GENDER_MALE = "男性";
+	/** 性別 男性 選択肢番号 */
+	public static final int GENDER_MALE_NUMBER = 1;
 	/** 性別 女性 */
 	public static final String GENDER_FEMALE = "女性";
+	/** 性別 女性 選択肢番号 */
+	public static final int GENDER_FEMALE_NUMBER = 2;
 	/** 性別 その他 */
 	public static final String GENDER_OTHER = "その他";
+	/** 性別 その他 選択肢番号 */
+	public static final int GENDER_OTHER_NUMBER = 9;
 	/** 生年月日 */
 	public static final String BIRTHDAY = "birthday";
 	/** 部署ID */
@@ -39,10 +47,16 @@ public class ConstantValue {
 	public static final String DEPT_NAME = "dept_name";
 	/** 部署名 営業部 */
 	public static final String DEPT_SALES = "営業部";
+	/** 部署名 営業部 選択肢番号 */
+	public static final int DEPT_SALES_NUMBER = 1;
 	/** 部署名 経理部 */
 	public static final String DEPT_ACCOUNTING = "経理部";
+	/** 部署名 経理部 選択肢番号 */
+	public static final int DEPT_ACCOUNTING_NUMBER = 2;
 	/** 部署名 総務部 */
 	public static final String DEPT_GENERAL = "総務部";
+	/** 部署名 総務部 選択肢番号 */
+	public static final int DEPT_GENERAL_NUMBER = 3;
 
 	// ***** 登録、更新処理用の出力文字列 *****
 
