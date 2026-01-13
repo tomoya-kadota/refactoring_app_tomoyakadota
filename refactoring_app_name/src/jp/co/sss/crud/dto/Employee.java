@@ -2,6 +2,8 @@ package jp.co.sss.crud.dto;
 
 import java.util.Date;
 
+import jp.co.sss.crud.util.ConstantValue;
+
 public class Employee {
 
 	private Integer empId;
@@ -48,6 +50,23 @@ public class Employee {
 
 	public void setDepartment(Department department) {
 		this.department = department;
+	}
+
+	@Override
+	public String toString() {
+
+		String genderStr = "";
+
+		if (this.gender == ConstantValue.GENDER_NO_ANSWER_NUMBER) {
+			genderStr = ConstantValue.GENDER_NO_ANSWER;
+		} else if (this.gender == ConstantValue.GENDER_MALE_NUMBER) {
+			genderStr = ConstantValue.GENDER_MALE;
+		} else if (this.gender == ConstantValue.GENDER_FEMALE_NUMBER) {
+			genderStr = ConstantValue.GENDER_FEMALE;
+		} else if (this.gender == ConstantValue.GENDER_OTHER_NUMBER) {
+			genderStr = ConstantValue.GENDER_OTHER;
+		}
+		return empId + "\t" + empName + "\t" + genderStr + "\t" + birthday + "\t" + department.getDeptName();
 	}
 
 }

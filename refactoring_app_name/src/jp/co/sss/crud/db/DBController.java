@@ -10,7 +10,9 @@ import java.sql.SQLException;
 import java.sql.Types;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
+import jp.co.sss.crud.dto.Employee;
 import jp.co.sss.crud.util.ConstantMsg;
 import jp.co.sss.crud.util.ConstantSQL;
 import jp.co.sss.crud.util.ConstantValue;
@@ -32,60 +34,10 @@ public class DBController {
 	 * @throws ClassNotFoundException ドライバクラスが不在の場合に送出
 	 * @throws SQLException           DB処理でエラーが発生した場合に送出
 	 */
-	public static void findAll() throws ClassNotFoundException, SQLException {
-		Connection connection = null;
-		PreparedStatement preparedStatement = null;
-		ResultSet resultSet = null;
-
-		try {
-			// DBに接続
-			connection = DBManager.getConnection();
-
-			// ステートメントを作成
-			preparedStatement = connection.prepareStatement(ConstantSQL.SQL_ALL_SELECT);
-
-			// SQL文を実行
-			resultSet = preparedStatement.executeQuery();
-
-			// resultSetの結果Setがない場合はfalse
-			if (!resultSet.isBeforeFirst()) {
-				System.out.println(ConstantMsg.EMPLOYEE_NOT_FOUND);
-				return;
-			}
-
-			// レコードを出力
-			System.out.println(ConstantMsg.RESULT_HEADER);
-			while (resultSet.next()) {
-				System.out.print(resultSet.getString(ConstantValue.EMP_ID) + "\t");
-				System.out.print(resultSet.getString(ConstantValue.EMP_NAME) + "\t");
-
-				int gender = Integer.parseInt(resultSet.getString(ConstantValue.GENDER));
-				if (gender == ConstantValue.GENDER_NO_ANSWER_NUMBER) {
-					System.out.print(ConstantValue.GENDER_NO_ANSWER + "\t");
-				} else if (gender == ConstantValue.GENDER_MALE_NUMBER) {
-					System.out.print(ConstantValue.GENDER_MALE + "\t");
-
-				} else if (gender == ConstantValue.GENDER_FEMALE_NUMBER) {
-					System.out.print(ConstantValue.GENDER_FEMALE + "\t");
-
-				} else if (gender == ConstantValue.GENDER_OTHER_NUMBER) {
-					System.out.print(ConstantValue.GENDER_OTHER + "\t");
-
-				}
-
-				System.out.print(resultSet.getString(ConstantValue.BIRTHDAY) + "\t");
-				System.out.println(resultSet.getString(ConstantValue.DEPT_NAME));
-			}
-
-			System.out.println("");
-		} finally {
-			// ResultSetをクローズ
-			DBManager.closeResultSet(resultSet);
-			// Statementをクローズ
-			DBManager.closePreparedStatement(preparedStatement);
-			// DBとの接続を切断
-			DBManager.closeDBConnection(connection);
-		}
+	public static void findAll() throws ClassNotFoundException, SQLException, ParseException {
+		EmployeeDAO employeeDAO = new EmployeeDAO();
+		List<Employee> employees = employeeDAO.findAll();
+		System.out.println(employees);
 	}
 
 	/**
