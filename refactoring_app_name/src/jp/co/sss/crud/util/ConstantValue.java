@@ -71,8 +71,12 @@ public class ConstantValue {
 	public static final int DEPT_GENERAL_NUMBER = 3;
 
 
-	// ***** SimpleDateFormatを用いた日付形式の指定用文字列 *****
+	// ***** 形式指定に関連する文字列 *****
 
 	/** yyyy/MM/dd形式でのフォーマット */
 	public static final String DATE_FORMAT = "yyyy/MM/dd";
+	/** 削除処理SQL実行時、失敗した場合に設定する戻り値 */
+	public static final int DELETE_FAILURE = 0;
+	
+	
 }

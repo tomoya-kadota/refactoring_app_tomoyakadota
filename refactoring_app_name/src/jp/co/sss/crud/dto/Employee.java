@@ -1,5 +1,6 @@
 package jp.co.sss.crud.dto;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import jp.co.sss.crud.util.ConstantValue;
@@ -66,7 +67,9 @@ public class Employee {
 		} else if (this.gender == ConstantValue.GENDER_OTHER_NUMBER) {
 			genderStr = ConstantValue.GENDER_OTHER;
 		}
-		return empId + "\t" + empName + "\t" + genderStr + "\t" + birthday + "\t" + department.getDeptName();
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+		return empId + "\t" + empName + "\t" + genderStr + "\t" + sdf.format(birthday) + "\t" + department.getDeptName();
 	}
 
 }
