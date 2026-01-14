@@ -30,6 +30,14 @@ public class ConsoleWriter {
 		// 登録完了メッセージを出力
 		System.out.println(ConstantMsg.EMPLOYEE_INSERT_COMPLETE);
 	}
+	/**
+	 * 
+	 */
+	public static void showUpdateComplete() {
+		
+		// 更新完了メッセージを出力
+		System.out.println(ConstantMsg.EMPLOYEE_UPDATE_COMPLETE);
+	}
 
 	/**
 	 * 

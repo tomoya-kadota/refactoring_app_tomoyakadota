@@ -77,8 +77,5 @@ public class ConstantValue {
 	public static final String DATE_FORMAT = "yyyy/MM/dd";
 	/** 削除処理SQL実行時、失敗した場合に設定する戻り値 */
 	public static final int DELETE_FAILURE = 0;
-	/** 登録処理SQL実行時、失敗した場合に設定する戻り値 */
-	public static final int REGIST_FAILURE = 0;
-	
-	
+		
 }

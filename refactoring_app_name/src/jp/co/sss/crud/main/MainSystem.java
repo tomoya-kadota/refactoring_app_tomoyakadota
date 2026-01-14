@@ -11,6 +11,7 @@ import jp.co.sss.crud.service.EmployeeAllFindService;
 import jp.co.sss.crud.service.EmployeeFindByDeptIdService;
 import jp.co.sss.crud.service.EmployeeFindByEmpNameService;
 import jp.co.sss.crud.service.EmployeeRegisterService;
+import jp.co.sss.crud.service.EmployeeUpdateService;
 import jp.co.sss.crud.util.ConstantMsg;
 import jp.co.sss.crud.util.ConstantValue;
 
@@ -92,9 +93,7 @@ public class MainSystem {
 				Integer.parseInt(updateEmpId);
 
 				// 更新機能の呼出
-				DBController.update(updateEmpId);
-				System.out.println(ConstantMsg.EMPLOYEE_UPDATE_COMPLETE);
-
+				EmployeeUpdateService.update(updateEmpId);
 				break;
 
 			case ConstantValue.DELETE:

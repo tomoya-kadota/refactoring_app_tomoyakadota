@@ -25,20 +25,7 @@ public class DBController {
 
 	
 
-	/**
-	 * 社員情報を1件更新
-	 * 
-	 * @param empId 社員ID
-	 * @throws ClassNotFoundException ドライバクラスが不在の場合に送出
-	 * @throws SQLException           DB処理でエラーが発生した場合に送出
-	 * @throws IOException            入力処理でエラーが発生した場合に送出
-	 * @throws ParseException
-	 */
-	public static void update(String empId) throws ClassNotFoundException, SQLException, IOException, ParseException {
 
-		EmployeeDAO employeeDAO = new EmployeeDAO();
-		employeeDAO.update(empId);
-	}
 
 	/**
 	 * 社員情報を1件削除
