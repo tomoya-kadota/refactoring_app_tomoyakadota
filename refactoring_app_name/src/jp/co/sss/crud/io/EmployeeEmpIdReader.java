@@ -24,7 +24,7 @@ public class EmployeeEmpIdReader implements IConsoleReader {
 	@Override
 	public boolean isParseInt() {
 		// TODO 自動生成されたメソッド・スタブ
-		return true;
+		return false;
 	}
 
 }

@@ -79,7 +79,7 @@ public class ConstantValue {
 	/** 社員IDの入力形式 */
 	public static final String EMPID_PATTERN = "^[1-9１-９]{1}[0-9１-９]{0,3}$";
 	/** 性別の入力形式 */
-	public static final String GENDER_PATTERN = "^[0129０１２９{1}$";
+	public static final String GENDER_PATTERN = "^[0129０１２９]{1}$";
 	/** 部署IDの入力形式 */
 	public static final String DEPTID_PATTERN = "^[1-3１-３]{1}$";
 

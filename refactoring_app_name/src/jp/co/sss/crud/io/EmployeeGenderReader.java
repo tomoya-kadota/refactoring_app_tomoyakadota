@@ -22,7 +22,7 @@ public class EmployeeGenderReader implements IConsoleReader{
 
 	@Override
 	public boolean isParseInt() {
-		return true;
+		return false;
 	}
 
 

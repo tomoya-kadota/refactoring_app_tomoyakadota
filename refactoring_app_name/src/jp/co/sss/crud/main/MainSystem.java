@@ -8,12 +8,7 @@ import jp.co.sss.crud.exception.IllegalInputException;
 import jp.co.sss.crud.exception.SystemErrorException;
 import jp.co.sss.crud.io.ConsoleWriter;
 import jp.co.sss.crud.io.MenuNoReader;
-import jp.co.sss.crud.service.EmployeeAllFindService;
-import jp.co.sss.crud.service.EmployeeDeleteService;
-import jp.co.sss.crud.service.EmployeeFindByDeptIdService;
-import jp.co.sss.crud.service.EmployeeFindByEmpNameService;
-import jp.co.sss.crud.service.EmployeeRegisterService;
-import jp.co.sss.crud.service.EmployeeUpdateService;
+import jp.co.sss.crud.service.IEmployeeService;
 import jp.co.sss.crud.util.ConstantValue;
 
 /**
@@ -41,52 +36,12 @@ public class MainSystem {
 				// メニューの表示
 				ConsoleWriter.showMenu();
 
-				// メニュー番号の入力
 				menuNo = (int) menuNoReader.input();
 
-				// 機能の呼出
-				switch (menuNo) {
-				case ConstantValue.FIND_ALL:
-					// 全件表示機能の呼出
-					EmployeeAllFindService.findAll();
-					break;
-
-				case ConstantValue.FIND_BY_EMP_NAME:
-					// 社員名検索
-					ConsoleWriter.showInputEmpName();
-
-					// 検索機能の呼出
-					EmployeeFindByEmpNameService.findByEmpName();
-					break;
-
-				case ConstantValue.FIND_BY_DEPT_ID:
-					// 部署ID検索
-					ConsoleWriter.showInputDeptId();
-
-					// 検索機能の呼出
-					EmployeeFindByDeptIdService.findByDeptId();
-					break;
-
-				case ConstantValue.INSERT:
-					// 登録機能の呼出
-					EmployeeRegisterService.insert();
-					break;
-
-				case ConstantValue.UPDATE:
-					// 更新する社員IDを入力
-					ConsoleWriter.showInputEmpId();
-
-					// 更新機能の呼出
-					EmployeeUpdateService.update();
-					break;
-
-				case ConstantValue.DELETE:
-					// 削除する社員IDを入力
-					ConsoleWriter.showInputEmpId();
-
-					// 削除機能の呼出
-					EmployeeDeleteService.delete();
-					break;
+				if (menuNo != ConstantValue.SHUTDOWN) {
+					// メニュー番号の入力、及び機能の呼び出し
+					IEmployeeService iEmployeeService = IEmployeeService.getInstanceByMenuNo(menuNo);
+					iEmployeeService.execute();
 				}
 
 			} catch (IllegalInputException e) {

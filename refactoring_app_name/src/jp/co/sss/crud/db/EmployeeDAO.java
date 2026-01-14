@@ -313,20 +313,20 @@ public class EmployeeDAO {
 			String empName = (String) employeeNameReader.input();
 			// 性別を入力
 			ConsoleWriter.showInputGender();
-			Integer gender = (Integer) employeeGenderReader.input();
+			String gender = (String) employeeGenderReader.input();
 			// 誕生日を入力
 			ConsoleWriter.showInputBirthday();
 			String birthday = (String) employeeBirthdayReader.input();
 			// 部署IDを入力
 			ConsoleWriter.showInputDeptId();
-			Integer deptId = (Integer) employeeDeptIdReader.input();
+			String deptId = (String) employeeDeptIdReader.input();
 
 			// 入力値をバインド
 			preparedStatement.setString(1, empName);
-			preparedStatement.setInt(2, gender);
+			preparedStatement.setInt(2, Integer.parseInt(gender));
 			SimpleDateFormat sdf = new SimpleDateFormat(ConstantValue.DATE_FORMAT);
 			preparedStatement.setObject(3, sdf.parse(birthday), Types.DATE);
-			preparedStatement.setInt(4, deptId);
+			preparedStatement.setInt(4, Integer.parseInt(deptId));
 			preparedStatement.setInt(5, Integer.parseInt(empId));
 
 			// SQL文の実行(失敗時は戻り値0)
@@ -363,13 +363,13 @@ public class EmployeeDAO {
 		try {
 			// データベースに接続
 			connection = DBManager.getConnection();
-			Integer empId = (Integer) employeeEmpIdReader.input();
+			String empId = (String) employeeEmpIdReader.input();
 
 			// ステートメントの作成
 			preparedStatement = connection.prepareStatement(ConstantSQL.SQL_DELETE);
 
 			// 社員IDをバインド
-			preparedStatement.setInt(1, empId);
+			preparedStatement.setInt(1, Integer.parseInt(empId));
 
 			// SQL文の実行(失敗時は戻り値0)
 			return preparedStatement.executeUpdate();

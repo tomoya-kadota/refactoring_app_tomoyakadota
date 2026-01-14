@@ -1,27 +1,19 @@
 package jp.co.sss.crud.service;
 
-import java.io.IOException;
-import java.sql.SQLException;
-
 import jp.co.sss.crud.db.EmployeeDAO;
+import jp.co.sss.crud.exception.IllegalInputException;
 import jp.co.sss.crud.exception.SystemErrorException;
 import jp.co.sss.crud.io.ConsoleWriter;
 import jp.co.sss.crud.util.ConstantValue;
 
-public class EmployeeDeleteService {
+public class EmployeeDeleteService implements IEmployeeService {
 
-	/**
-	 * 社員情報を1件削除
-	 *
-	 * @throws ClassNotFoundException ドライバクラスが不在の場合に送出
-	 * @throws SQLException           DB処理でエラーが発生した場合に送出
-	 * @throws IOException            入力処理でエラーが発生した場合に送出
-	 */
-	public static void delete() throws SystemErrorException{
-
+	@Override
+	public void execute() throws SystemErrorException, IllegalInputException {
 		EmployeeDAO employeeDAO = new EmployeeDAO();
-		
-		if(employeeDAO.delete() != ConstantValue.DELETE_FAILURE) {
+
+		ConsoleWriter.showDeleteInputEmpId();
+		if (employeeDAO.delete() != ConstantValue.DELETE_FAILURE) {
 			ConsoleWriter.showDeleteComplete();
 		}
 	}

@@ -28,10 +28,18 @@ public class ConsoleWriter {
 	/**
 	 * 
 	 */
-	public static void showInputEmpId() {
+	public static void showUpdateInputEmpId() {
 		
 		// 社員IDの入力を促すメッセージを出力
 		System.out.print(ConstantMsg.UPDATE_EMPID_MSG);
+	}
+	/**
+	 * 
+	 */
+	public static void showDeleteInputEmpId() {
+		
+		// 社員IDの入力を促すメッセージを出力
+		System.out.print(ConstantMsg.DELETE_EMPID_MSG);
 	}
 	
 	/**
