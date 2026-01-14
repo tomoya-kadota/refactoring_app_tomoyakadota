@@ -6,6 +6,7 @@ import java.text.ParseException;
 
 import jp.co.sss.crud.db.EmployeeDAO;
 import jp.co.sss.crud.exception.SystemErrorException;
+import jp.co.sss.crud.io.ConsoleWriter;
 import jp.co.sss.crud.io.EmployeeEmpIdReader;
 
 public class EmployeeUpdateService {
@@ -24,6 +25,6 @@ public class EmployeeUpdateService {
 		EmployeeDAO employeeDAO = new EmployeeDAO();
 		// 更新する値を入力する
 		employeeDAO.update(EmployeeEmpIdReader.input());
-
+		ConsoleWriter.showUpdateComplete();
 	}
 }

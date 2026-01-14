@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.text.ParseException;
 
+import jp.co.sss.crud.exception.IllegalInputException;
 import jp.co.sss.crud.exception.SystemErrorException;
 import jp.co.sss.crud.io.ConsoleWriter;
 import jp.co.sss.crud.io.MenuNoReader;
@@ -88,6 +89,10 @@ public class MainSystem {
 					break;
 				}
 
+			} catch (IllegalInputException e) {
+				System.out.println(e.getMessage());
+				System.out.println();
+				continue;
 			} catch (SystemErrorException e) {
 				System.out.println(e.getMessage());
 				e.printStackTrace();
