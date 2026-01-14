@@ -21,19 +21,7 @@ public class DBController {
 
 
 
-	/**
-	 * 部署IDに該当する社員情報を検索
-	 *
-	 * @throws ClassNotFoundException ドライバクラスが不在の場合に送出
-	 * @throws SQLException           DB処理でエラーが発生した場合に送出
-	 * @throws IOException            入力処理でエラーが発生した場合に送出
-	 */
-	public static void findByDeptId(String deptId)
-			throws ClassNotFoundException, SQLException, IOException, ParseException {
 
-		EmployeeDAO employeeDAO = new EmployeeDAO();
-		employeeDAO.findByDeptId(deptId);
-	}
 
 	/**
 	 * 社員情報を1件登録

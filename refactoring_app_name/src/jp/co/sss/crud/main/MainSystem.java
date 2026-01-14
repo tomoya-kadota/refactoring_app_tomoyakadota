@@ -8,6 +8,7 @@ import java.text.ParseException;
 
 import jp.co.sss.crud.db.DBController;
 import jp.co.sss.crud.service.EmployeeAllFindService;
+import jp.co.sss.crud.service.EmployeeFindByDeptIdService;
 import jp.co.sss.crud.service.EmployeeFindByEmpNameService;
 import jp.co.sss.crud.util.ConstantMsg;
 import jp.co.sss.crud.util.ConstantValue;
@@ -63,7 +64,7 @@ public class MainSystem {
 				String inputDeptId = br.readLine();
 
 				// 検索機能の呼出
-				DBController.findByDeptId(inputDeptId);
+				EmployeeFindByDeptIdService.findByDeptId(inputDeptId);
 				break;
 
 			case ConstantValue.INSERT:
