@@ -8,6 +8,7 @@ import java.text.ParseException;
 
 import jp.co.sss.crud.db.DBController;
 import jp.co.sss.crud.service.EmployeeAllFindService;
+import jp.co.sss.crud.service.EmployeeFindByEmpNameService;
 import jp.co.sss.crud.util.ConstantMsg;
 import jp.co.sss.crud.util.ConstantValue;
 
@@ -53,7 +54,7 @@ public class MainSystem {
 				System.out.print(ConstantMsg.INPUT_EMPNAME);
 
 				// 検索機能の呼出
-				DBController.findByEmpName();
+				EmployeeFindByEmpNameService.findByEmpName();
 				break;
 
 			case ConstantValue.FIND_BY_DEPT_ID:

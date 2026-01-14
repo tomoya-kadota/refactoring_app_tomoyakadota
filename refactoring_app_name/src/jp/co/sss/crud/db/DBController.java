@@ -19,21 +19,7 @@ public class DBController {
 	private DBController() {
 	}
 
-	/**
-	 * 社員名に該当する社員情報を検索
-	 *
-	 * @throws ClassNotFoundException ドライバクラスが不在の場合に送出
-	 * @throws SQLException           DB処理でエラーが発生した場合に送出
-	 * @throws IOException            入力処理でエラーが発生した場合に送出
-	 */
-	public static void findByEmpName() throws ClassNotFoundException, SQLException, IOException, ParseException {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-		// 検索ワード
-		String searchName = br.readLine();
-		EmployeeDAO employeeDAO = new EmployeeDAO();
-		employeeDAO.findByEmpName(searchName);
-	}
 
 	/**
 	 * 部署IDに該当する社員情報を検索
