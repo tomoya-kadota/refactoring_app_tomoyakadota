@@ -1,8 +1,6 @@
 package jp.co.sss.crud.db;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,6 +15,11 @@ import jp.co.sss.crud.dto.Department;
 import jp.co.sss.crud.dto.Employee;
 import jp.co.sss.crud.exception.SystemErrorException;
 import jp.co.sss.crud.io.ConsoleWriter;
+import jp.co.sss.crud.io.EmployeeBirthdayReader;
+import jp.co.sss.crud.io.EmployeeDeptIdReader;
+import jp.co.sss.crud.io.EmployeeEmpIdReader;
+import jp.co.sss.crud.io.EmployeeGenderReader;
+import jp.co.sss.crud.io.EmployeeNameReader;
 import jp.co.sss.crud.util.ConstantMsg;
 import jp.co.sss.crud.util.ConstantSQL;
 import jp.co.sss.crud.util.ConstantValue;
@@ -292,7 +295,6 @@ public class EmployeeDAO {
 	public Integer update(String empId) throws SystemErrorException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
 		try {
 			// データベースに接続
@@ -303,16 +305,16 @@ public class EmployeeDAO {
 
 			// 社員名を入力
 			ConsoleWriter.showInputEmpName();
-			String empName = br.readLine();
+			String empName = EmployeeNameReader.input();
 			// 性別を入力
 			ConsoleWriter.showInputGender();
-			String gender = br.readLine();
+			String gender = EmployeeGenderReader.input();
 			// 誕生日を入力
 			ConsoleWriter.showInputBirthday();
-			String birthday = br.readLine();
+			String birthday = EmployeeBirthdayReader.input();
 			// 部署IDを入力
 			ConsoleWriter.showInputDeptId();
-			String deptId = br.readLine();
+			String deptId = EmployeeDeptIdReader.input();
 
 			// 入力値をバインド
 			preparedStatement.setString(1, empName);
@@ -325,7 +327,7 @@ public class EmployeeDAO {
 			// SQL文の実行(失敗時は戻り値0)
 			return preparedStatement.executeUpdate();
 
-		} catch (ClassNotFoundException | SQLException | IOException | ParseException e) {
+		} catch (ClassNotFoundException | SQLException | ParseException e) {
 			throw new SystemErrorException(ConstantMsg.SYSTEM_ERROR_MSG, e);
 
 		} finally {
@@ -352,12 +354,11 @@ public class EmployeeDAO {
 
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
 		try {
 			// データベースに接続
 			connection = DBManager.getConnection();
-			String empId = br.readLine();
+			String empId = EmployeeEmpIdReader.input();
 
 			// ステートメントの作成
 			preparedStatement = connection.prepareStatement(ConstantSQL.SQL_DELETE);
@@ -368,7 +369,7 @@ public class EmployeeDAO {
 			// SQL文の実行(失敗時は戻り値0)
 			return preparedStatement.executeUpdate();
 
-		} catch (ClassNotFoundException | SQLException | IOException e) {
+		} catch (ClassNotFoundException | SQLException e) {
 			throw new SystemErrorException(ConstantMsg.SYSTEM_ERROR_MSG, e);
 
 		} finally {

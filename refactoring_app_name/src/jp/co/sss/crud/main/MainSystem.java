@@ -1,20 +1,18 @@
 package jp.co.sss.crud.main;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.sql.SQLException;
 import java.text.ParseException;
 
 import jp.co.sss.crud.exception.SystemErrorException;
 import jp.co.sss.crud.io.ConsoleWriter;
+import jp.co.sss.crud.io.MenuNoReader;
 import jp.co.sss.crud.service.EmployeeAllFindService;
 import jp.co.sss.crud.service.EmployeeDeleteService;
 import jp.co.sss.crud.service.EmployeeFindByDeptIdService;
 import jp.co.sss.crud.service.EmployeeFindByEmpNameService;
 import jp.co.sss.crud.service.EmployeeRegisterService;
 import jp.co.sss.crud.service.EmployeeUpdateService;
-import jp.co.sss.crud.util.ConstantMsg;
 import jp.co.sss.crud.util.ConstantValue;
 
 /**
@@ -34,7 +32,6 @@ public class MainSystem {
 	 * @throws ParseException
 	 */
 	public static void main(String[] args) throws SystemErrorException {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
 		int menuNo = 0;
 
@@ -44,8 +41,7 @@ public class MainSystem {
 				ConsoleWriter.showMenu();
 
 				// メニュー番号の入力
-				String menuNoStr = br.readLine();
-				menuNo = Integer.parseInt(menuNoStr);
+				menuNo = Integer.parseInt(MenuNoReader.input());
 
 				// 機能の呼出
 				switch (menuNo) {
@@ -97,6 +93,7 @@ public class MainSystem {
 				e.printStackTrace();
 				break;
 			}
+
 		} while (menuNo != ConstantValue.SHUTDOWN);
 		ConsoleWriter.showSystemShutDown();
 	}

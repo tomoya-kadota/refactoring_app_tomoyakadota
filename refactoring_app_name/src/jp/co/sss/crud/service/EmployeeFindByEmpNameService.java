@@ -1,16 +1,13 @@
 package jp.co.sss.crud.service;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.sql.SQLException;
 import java.util.List;
-
 import jp.co.sss.crud.db.EmployeeDAO;
 import jp.co.sss.crud.dto.Employee;
 import jp.co.sss.crud.exception.SystemErrorException;
 import jp.co.sss.crud.io.ConsoleWriter;
-import jp.co.sss.crud.util.ConstantMsg;
+import jp.co.sss.crud.io.EmployeeNameReader;
 
 public class EmployeeFindByEmpNameService {
 
@@ -22,19 +19,9 @@ public class EmployeeFindByEmpNameService {
 	 * @throws IOException            入力処理でエラーが発生した場合に送出
 	 */
 	public static void findByEmpName() throws SystemErrorException {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-		// 検索ワード
-		String searchName = "";
-
-		try {
-			searchName = br.readLine();
-		} catch (IOException e) {
-			throw new SystemErrorException(ConstantMsg.SYSTEM_ERROR_MSG, e);
-		}
 
 		EmployeeDAO employeeDAO = new EmployeeDAO();
-		List<Employee> searchedEmployees = employeeDAO.findByEmpName(searchName);
+		List<Employee> searchedEmployees = employeeDAO.findByEmpName(EmployeeNameReader.input());
 		ConsoleWriter.showEmployees(searchedEmployees);
 	}
 }

@@ -1,15 +1,16 @@
 package jp.co.sss.crud.service;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.sql.SQLException;
 import java.text.ParseException;
 
 import jp.co.sss.crud.db.EmployeeDAO;
 import jp.co.sss.crud.exception.SystemErrorException;
 import jp.co.sss.crud.io.ConsoleWriter;
-import jp.co.sss.crud.util.ConstantMsg;
+import jp.co.sss.crud.io.EmployeeBirthdayReader;
+import jp.co.sss.crud.io.EmployeeDeptIdReader;
+import jp.co.sss.crud.io.EmployeeGenderReader;
+import jp.co.sss.crud.io.EmployeeNameReader;
 
 public class EmployeeRegisterService {
 
@@ -25,28 +26,21 @@ public class EmployeeRegisterService {
 	 * @throws IOException            入力処理でエラーが発生した場合に送出
 	 * @throws ParseException
 	 */
-	public static void insert()
-			throws SystemErrorException{
-		
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		try {
-			// 登録する値を入力
-			ConsoleWriter.showInputEmpName();
-			String insertEmpName = br.readLine();
-			ConsoleWriter.showInputGender();
-			String insertGender = br.readLine();
-			ConsoleWriter.showInputBirthday();
-			String insertBirthday = br.readLine();
-			ConsoleWriter.showInputDeptId();
-			String insertDeptId = br.readLine();
+	public static void insert() throws SystemErrorException {
 
-			EmployeeDAO employeeDAO = new EmployeeDAO();
-			employeeDAO.insert(insertEmpName, insertGender, insertBirthday, insertDeptId);
-			ConsoleWriter.showInsertComplete();
-			
-		} catch (IOException e) {
-			throw new SystemErrorException(ConstantMsg.SYSTEM_ERROR_MSG,e);
-		}
+		// 登録する値を入力
+		ConsoleWriter.showInputEmpName();
+		String insertEmpName = EmployeeNameReader.input();
+		ConsoleWriter.showInputGender();
+		String insertGender = EmployeeGenderReader.input();
+		ConsoleWriter.showInputBirthday();
+		String insertBirthday = EmployeeBirthdayReader.input();
+		ConsoleWriter.showInputDeptId();
+		String insertDeptId = EmployeeDeptIdReader.input();
+
+		EmployeeDAO employeeDAO = new EmployeeDAO();
+		employeeDAO.insert(insertEmpName, insertGender, insertBirthday, insertDeptId);
+		ConsoleWriter.showInsertComplete();
 
 	}
 }
