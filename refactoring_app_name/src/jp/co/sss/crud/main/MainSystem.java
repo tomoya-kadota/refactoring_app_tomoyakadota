@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 
 import jp.co.sss.crud.db.DBController;
+import jp.co.sss.crud.service.EmployeeAllFindService;
 import jp.co.sss.crud.util.ConstantMsg;
 import jp.co.sss.crud.util.ConstantValue;
 
@@ -44,7 +45,7 @@ public class MainSystem {
 			switch (menuNo) {
 			case ConstantValue.FIND_ALL:
 				// 全件表示機能の呼出
-				DBController.findAll();
+				EmployeeAllFindService.findAll();
 				break;
 
 			case ConstantValue.FIND_BY_EMP_NAME:

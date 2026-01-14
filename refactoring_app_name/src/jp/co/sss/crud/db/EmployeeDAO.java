@@ -44,12 +44,10 @@ public class EmployeeDAO {
 
 			// resultSetの結果Setがない場合はreturn
 			if (!resultSet.isBeforeFirst()) {
-				System.out.println(ConstantMsg.EMPLOYEE_NOT_FOUND);
 				return employees;
 			}
 
 			// レコードを出力
-			System.out.println(ConstantMsg.RESULT_HEADER);
 			while (resultSet.next()) {
 				Employee employee = new Employee();
 				employee.setEmpId(resultSet.getInt(ConstantValue.EMP_ID));
@@ -65,7 +63,6 @@ public class EmployeeDAO {
 				employee.setDepartment(department);
 
 				employees.add(employee);
-				System.out.println(employee);
 			}
 
 		} finally {
@@ -180,11 +177,8 @@ public class EmployeeDAO {
 			resultSet = preparedStatement.executeQuery();
 
 			if (!resultSet.isBeforeFirst()) {
-				System.out.println(ConstantMsg.EMPLOYEE_NOT_FOUND);
 				return employees;
 			}
-
-			System.out.println(ConstantMsg.RESULT_HEADER);
 
 			while (resultSet.next()) {
 				Employee employee = new Employee();
@@ -201,7 +195,6 @@ public class EmployeeDAO {
 				employee.setDepartment(department);
 
 				employees.add(employee);
-				System.out.println(employee);
 			}
 		} finally {
 			// クローズ処理
