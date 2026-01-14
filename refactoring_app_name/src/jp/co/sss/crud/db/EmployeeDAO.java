@@ -237,8 +237,7 @@ public class EmployeeDAO {
 			// SQL文を実行
 			preparedStatement.executeUpdate();
 
-			// 登録完了メッセージを出力
-			System.out.println(ConstantMsg.EMPLOYEE_INSERT_COMPLETE);
+
 		} finally {
 			DBManager.closePreparedStatement(preparedStatement);
 			DBManager.closeDBConnection(connection);

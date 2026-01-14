@@ -10,6 +10,7 @@ import jp.co.sss.crud.db.DBController;
 import jp.co.sss.crud.service.EmployeeAllFindService;
 import jp.co.sss.crud.service.EmployeeFindByDeptIdService;
 import jp.co.sss.crud.service.EmployeeFindByEmpNameService;
+import jp.co.sss.crud.service.EmployeeRegisterService;
 import jp.co.sss.crud.util.ConstantMsg;
 import jp.co.sss.crud.util.ConstantValue;
 
@@ -79,7 +80,7 @@ public class MainSystem {
 				String insertDeptId = br.readLine();
 
 				// 登録機能の呼出
-				DBController.insert(insertEmpName, insertGender, insertBirthday, insertDeptId);
+				EmployeeRegisterService.insert(insertEmpName, insertGender, insertBirthday, insertDeptId);
 				break;
 
 			case ConstantValue.UPDATE:

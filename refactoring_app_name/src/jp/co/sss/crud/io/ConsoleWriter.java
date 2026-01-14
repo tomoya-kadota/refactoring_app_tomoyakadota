@@ -21,6 +21,15 @@ public class ConsoleWriter {
 			}
 		}
 	}
+	
+	/**
+	 * 
+	 */
+	public static void showInsertComplete() {
+		
+		// 登録完了メッセージを出力
+		System.out.println(ConstantMsg.EMPLOYEE_INSERT_COMPLETE);
+	}
 
 	/**
 	 * 
@@ -37,4 +46,5 @@ public class ConsoleWriter {
 		
 		System.out.println(ConstantMsg.EMPLOYEE_NOT_FOUND);
 	}
+	
 }
