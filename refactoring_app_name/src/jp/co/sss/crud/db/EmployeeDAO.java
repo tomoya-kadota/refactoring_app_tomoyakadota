@@ -15,7 +15,7 @@ import java.util.List;
 
 import jp.co.sss.crud.dto.Department;
 import jp.co.sss.crud.dto.Employee;
-import jp.co.sss.crud.util.ConstantMsg;
+import jp.co.sss.crud.io.ConsoleWriter;
 import jp.co.sss.crud.util.ConstantSQL;
 import jp.co.sss.crud.util.ConstantValue;
 
@@ -264,18 +264,18 @@ public class EmployeeDAO {
 
 			// ステートメントの作成
 			preparedStatement = connection.prepareStatement(ConstantSQL.SQL_UPDATE);
-
-			System.out.print(ConstantMsg.INPUT_EMPNAME);
+			
+			// 社員名を入力
+			ConsoleWriter.showInputEmpName();
 			String empName = br.readLine();
 			// 性別を入力
-			System.out.print(ConstantMsg.INPUT_GENDER);
+			ConsoleWriter.showInputGender();
 			String gender = br.readLine();
 			// 誕生日を入力
-			System.out.print(ConstantMsg.INPUT_BIRTHDAY);
+			ConsoleWriter.showInputBirthday();
 			String birthday = br.readLine();
-
 			// 部署IDを入力
-			System.out.print(ConstantMsg.INPUT_DEPTID);
+			ConsoleWriter.showInputDeptId();
 			String deptId = br.readLine();
 
 			// 入力値をバインド

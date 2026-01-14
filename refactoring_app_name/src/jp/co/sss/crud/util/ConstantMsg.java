@@ -31,7 +31,7 @@ public class ConstantMsg {
 	/** 更新対象の社員IDの入力を促すメッセージ */
 	public static final String UPDATE_EMPID_MSG = "更新する社員の社員IDを入力してください：";
 	/** 削除対象の社員IDの入力を促すメッセージ */
-	public static final String DELETE_DEPTID_MSG = "削除する社員の社員IDを入力してください：";
+	public static final String DELETE_EMPID_MSG = "削除する社員の社員IDを入力してください：";
 	/** 部署IDの入力を促すメッセージ */
 	public static final String INPUT_DEPTID_MSG = "部署ID(1:営業部、2:経理部、3:総務部)を入力してください:";
 	/** 社員名の入力を促すメッセージ */

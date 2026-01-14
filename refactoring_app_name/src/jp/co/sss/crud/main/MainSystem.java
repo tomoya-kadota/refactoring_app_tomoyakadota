@@ -6,13 +6,13 @@ import java.io.InputStreamReader;
 import java.sql.SQLException;
 import java.text.ParseException;
 
+import jp.co.sss.crud.io.ConsoleWriter;
 import jp.co.sss.crud.service.EmployeeAllFindService;
 import jp.co.sss.crud.service.EmployeeDeleteService;
 import jp.co.sss.crud.service.EmployeeFindByDeptIdService;
 import jp.co.sss.crud.service.EmployeeFindByEmpNameService;
 import jp.co.sss.crud.service.EmployeeRegisterService;
 import jp.co.sss.crud.service.EmployeeUpdateService;
-import jp.co.sss.crud.util.ConstantMsg;
 import jp.co.sss.crud.util.ConstantValue;
 
 /**
@@ -38,8 +38,7 @@ public class MainSystem {
 
 		do {
 			// メニューの表示
-			System.out.println(ConstantMsg.MENU);
-			System.out.print(ConstantMsg.INPUT_MENU_NUMBER);
+			ConsoleWriter.showMenu();
 
 			// メニュー番号の入力
 			String menuNoStr = br.readLine();
@@ -54,7 +53,7 @@ public class MainSystem {
 
 			case ConstantValue.FIND_BY_EMP_NAME:
 				// 社員名検索
-				System.out.print(ConstantMsg.INPUT_EMPNAME);
+				ConsoleWriter.showInputEmpName();
 
 				// 検索機能の呼出
 				EmployeeFindByEmpNameService.findByEmpName();
@@ -62,7 +61,7 @@ public class MainSystem {
 
 			case ConstantValue.FIND_BY_DEPT_ID:
 				// 検索する部署IDを入力
-				System.out.print(ConstantMsg.INPUT_DEPTID_MSG);
+				ConsoleWriter.showInputDeptId();
 				String inputDeptId = br.readLine();
 
 				// 検索機能の呼出
@@ -71,13 +70,13 @@ public class MainSystem {
 
 			case ConstantValue.INSERT:
 				// 登録する値を入力
-				System.out.print(ConstantMsg.INPUT_EMPNAME);
+				ConsoleWriter.showInputEmpName();
 				String insertEmpName = br.readLine();
-				System.out.print(ConstantMsg.INPUT_GENDER);
+				ConsoleWriter.showInputGender();
 				String insertGender = br.readLine();
-				System.out.print(ConstantMsg.INPUT_BIRTHDAY);
+				ConsoleWriter.showInputBirthday();
 				String insertBirthday = br.readLine();
-				System.out.print(ConstantMsg.INPUT_DEPTID);
+				ConsoleWriter.showInputDeptId();
 				String insertDeptId = br.readLine();
 
 				// 登録機能の呼出
@@ -86,7 +85,7 @@ public class MainSystem {
 
 			case ConstantValue.UPDATE:
 				// 更新する社員IDを入力
-				System.out.print(ConstantMsg.UPDATE_EMPID_MSG);
+				ConsoleWriter.showInputEmpId();
 
 				// 更新する値を入力する
 				String updateEmpId = br.readLine();
@@ -98,7 +97,7 @@ public class MainSystem {
 
 			case ConstantValue.DELETE:
 				// 削除する社員IDを入力
-				System.out.print(ConstantMsg.DELETE_DEPTID_MSG);
+				ConsoleWriter.showInputEmpId();
 
 				// 削除機能の呼出
 				EmployeeDeleteService.delete();
@@ -106,6 +105,6 @@ public class MainSystem {
 
 			}
 		} while (menuNo != ConstantValue.SHUTDOWN);
-		System.out.println(ConstantMsg.SYSTEM_SHUTDOWN);
+		ConsoleWriter.showSystemShutDown();
 	}
 }
