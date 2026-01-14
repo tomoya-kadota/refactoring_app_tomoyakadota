@@ -8,6 +8,7 @@ import java.text.ParseException;
 
 import jp.co.sss.crud.db.DBController;
 import jp.co.sss.crud.service.EmployeeAllFindService;
+import jp.co.sss.crud.service.EmployeeDeleteService;
 import jp.co.sss.crud.service.EmployeeFindByDeptIdService;
 import jp.co.sss.crud.service.EmployeeFindByEmpNameService;
 import jp.co.sss.crud.service.EmployeeRegisterService;
@@ -101,7 +102,7 @@ public class MainSystem {
 				System.out.print(ConstantMsg.DELETE_DEPTID_MSG);
 
 				// 削除機能の呼出
-				DBController.delete();
+				EmployeeDeleteService.delete();
 				break;
 
 			}

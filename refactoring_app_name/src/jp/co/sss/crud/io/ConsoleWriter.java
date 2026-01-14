@@ -38,6 +38,11 @@ public class ConsoleWriter {
 		// 更新完了メッセージを出力
 		System.out.println(ConstantMsg.EMPLOYEE_UPDATE_COMPLETE);
 	}
+	public static void showDeleteComplete() {
+		
+		// 更新完了メッセージを出力
+		System.out.println(ConstantMsg.EMPLOYEE_DELETE_COMPLETE);
+	}
 
 	/**
 	 * 
