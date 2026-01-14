@@ -54,7 +54,25 @@ public class ConstantMsg {
 	public static final String EMPLOYEE_DELETE_COMPLETE = "社員情報を削除しました";
 	/** システム終了時に表示するメッセージ */
 	public static final String SYSTEM_SHUTDOWN = "システムを終了します。";
+	
+	// ***** 例外発生時に表示するメッセージ *****
 	/** 検査例外が発生した場合に表示するメッセージ */
 	public static final String SYSTEM_ERROR_MSG = "システムエラーです。";
+	/** 社員IDの入力チェックの結果、非検査例外が発生した場合に表示するメッセージ */
+	public static final String MENUNO_ERROR_MSG = "1以上7以下の整数を入力してください";
+	/** 社員IDの入力チェックの結果、非検査例外が発生した場合に表示するメッセージ */
+	public static final String EMPID_ERROR_MSG = "1以上9999以下の整数を入力してください";
+	/** 社員名の入力チェックの結果、非検査例外が発生した場合に表示するメッセージ */
+	public static final String EMPNAME_ERROR_MSG = "1文字以上30文字以下の文字列を入力してください";
+	/** 性別の入力チェックの結果、非検査例外が発生した場合に表示するメッセージ */
+	public static final String GENDER_ERROR_MSG = "0、1、2、9のうち、いずれかの整数を入力してください";
+	/** 生年月日の入力チェックの結果、非検査例外が発生した場合に表示するメッセージ */
+	public static final String BIRTHDAY_ERROR_MSG = "正しい形式(西暦年/月/日)で日付を入力してください：";
+	/** 部署IDの入力チェックの結果、非検査例外が発生した場合に表示するメッセージ */
+	public static final String DEPTID_ERROR_MSG = "1以上3以下の整数を入力してください";
+
+
+	
+	
 
 }

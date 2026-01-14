@@ -6,7 +6,7 @@ public class IllegalInputException extends RuntimeException{
 		super();
 	}
 	
-	public IllegalInputException(String errorMessage, Throwable cause) {
-		super(errorMessage, cause);
+	public IllegalInputException(String errorMessage) {
+		super(errorMessage);
 	}
 }

@@ -35,14 +35,14 @@ public class MainSystem {
 	public static void main(String[] args) throws SystemErrorException {
 
 		int menuNo = 0;
-
+		MenuNoReader menuNoReader = new MenuNoReader();
 		do {
 			try {
 				// メニューの表示
 				ConsoleWriter.showMenu();
 
 				// メニュー番号の入力
-				menuNo = Integer.parseInt(MenuNoReader.input());
+				menuNo = (int) menuNoReader.input();
 
 				// 機能の呼出
 				switch (menuNo) {

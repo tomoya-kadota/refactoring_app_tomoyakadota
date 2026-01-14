@@ -28,15 +28,19 @@ public class EmployeeRegisterService {
 	 */
 	public static void insert() throws SystemErrorException {
 
+		EmployeeNameReader employeeNameReader = new EmployeeNameReader();
+		EmployeeGenderReader employeeGenderReader = new EmployeeGenderReader();
+		EmployeeBirthdayReader employeeBirthdayReader = new EmployeeBirthdayReader();
+		EmployeeDeptIdReader employeeDeptIdReader = new EmployeeDeptIdReader();
 		// 登録する値を入力
 		ConsoleWriter.showInputEmpName();
-		String insertEmpName = EmployeeNameReader.input();
+		String insertEmpName = (String) employeeNameReader.input();
 		ConsoleWriter.showInputGender();
-		String insertGender = EmployeeGenderReader.input();
+		String insertGender = (String) employeeGenderReader.input();
 		ConsoleWriter.showInputBirthday();
-		String insertBirthday = EmployeeBirthdayReader.input();
+		String insertBirthday = (String) employeeBirthdayReader.input();
 		ConsoleWriter.showInputDeptId();
-		String insertDeptId = EmployeeDeptIdReader.input();
+		String insertDeptId = (String) employeeDeptIdReader.input();
 
 		EmployeeDAO employeeDAO = new EmployeeDAO();
 		employeeDAO.insert(insertEmpName, insertGender, insertBirthday, insertDeptId);

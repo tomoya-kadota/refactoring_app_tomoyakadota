@@ -71,10 +71,20 @@ public class ConstantValue {
 	public static final int DEPT_GENERAL_NUMBER = 3;
 
 
-	// ***** 形式指定に関連する文字列 *****
-
+	// ***** 形式指定、入力チェックに関連する文字列 *****
 	/** yyyy/MM/dd形式でのフォーマット */
 	public static final String DATE_FORMAT = "yyyy/MM/dd";
+	/** メニュー番号の入力形式 */
+	public static final String MENUNO_PATTERN = "^[1-7１-７]{1}$";
+	/** 社員IDの入力形式 */
+	public static final String EMPID_PATTERN = "^[1-9１-９]{1}[0-9１-９]{0,3}$";
+	/** 性別の入力形式 */
+	public static final String GENDER_PATTERN = "^[0129０１２９{1}$";
+	/** 部署IDの入力形式 */
+	public static final String DEPTID_PATTERN = "^[1-3１-３]{1}$";
+
+	
+	
 	/** 削除処理SQL実行時、失敗した場合に設定する戻り値 */
 	public static final int DELETE_FAILURE = 0;
 		

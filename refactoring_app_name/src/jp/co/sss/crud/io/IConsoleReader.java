@@ -1,13 +1,12 @@
 package jp.co.sss.crud.io;
 
-import static jp.co.sss.crud.util.ConstantMsg.*;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
 import jp.co.sss.crud.exception.IllegalInputException;
 import jp.co.sss.crud.exception.SystemErrorException;
+import jp.co.sss.crud.util.ConstantMsg;
 
 /**
  * コンソール入力・入力チェック機能のインターフェース
@@ -28,14 +27,14 @@ public interface IConsoleReader {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		String input = null;
 		try {
-			//			br.close();//IOExceptionを発生させる場合はコメントを外して実行する
+			//		br.close();//IOExceptionを発生させる場合はコメントを外して実行する
 			input = br.readLine();
 			if (!isValid(input)) {
 				String errorMsg = getErrorMsg();
 				throw new IllegalInputException(errorMsg);
 			}
 		} catch (IOException e) {
-			throw new SystemErrorException(MSG_SYSTEM_ERROR, e);
+			throw new SystemErrorException(ConstantMsg.SYSTEM_ERROR_MSG, e);
 		}
 
 		if (isParseInt()) {

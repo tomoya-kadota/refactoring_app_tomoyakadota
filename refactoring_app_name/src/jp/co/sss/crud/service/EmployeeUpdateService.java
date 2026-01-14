@@ -23,8 +23,9 @@ public class EmployeeUpdateService {
 	public static void update() throws SystemErrorException {
 
 		EmployeeDAO employeeDAO = new EmployeeDAO();
+		EmployeeEmpIdReader employeeEmpIdReader = new EmployeeEmpIdReader();
 		// 更新する値を入力する
-		employeeDAO.update(EmployeeEmpIdReader.input());
+		employeeDAO.update((String) employeeEmpIdReader.input());
 		ConsoleWriter.showUpdateComplete();
 	}
 }

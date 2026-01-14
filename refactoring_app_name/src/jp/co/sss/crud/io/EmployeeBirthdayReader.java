@@ -1,25 +1,34 @@
 package jp.co.sss.crud.io;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
-import jp.co.sss.crud.exception.SystemErrorException;
 import jp.co.sss.crud.util.ConstantMsg;
+import jp.co.sss.crud.util.ConstantValue;
 
-public class EmployeeBirthdayReader {
+public class EmployeeBirthdayReader implements IConsoleReader {
 
-	public static String input() throws SystemErrorException {
+	@Override
+	public String getErrorMsg() {
+		return ConstantMsg.BIRTHDAY_ERROR_MSG;
+	}
 
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		String birthday = "";
+	@Override
+	public boolean isValid(String inputString) {
+		SimpleDateFormat sdf = new SimpleDateFormat(ConstantValue.DATE_FORMAT);
 
 		try {
-			birthday = br.readLine();
-		} catch (IOException e) {
-			throw new SystemErrorException(ConstantMsg.SYSTEM_ERROR_MSG, e);
-		}
+			sdf.parse(inputString);
 
-		return birthday;
+		} catch (ParseException e) {
+			return false;
+
+		}
+		return true;
+	}
+
+	@Override
+	public boolean isParseInt() {
+		return false;
 	}
 }

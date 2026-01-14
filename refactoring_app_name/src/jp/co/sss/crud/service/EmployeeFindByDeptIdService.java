@@ -22,7 +22,8 @@ public class EmployeeFindByDeptIdService {
 	public static void findByDeptId() throws SystemErrorException {
 
 		EmployeeDAO employeeDAO = new EmployeeDAO();
-		List<Employee> searchedEmployees = employeeDAO.findByDeptId(EmployeeDeptIdReader.input());
+		EmployeeDeptIdReader employeeDeptIdReader = new EmployeeDeptIdReader();
+		List<Employee> searchedEmployees = employeeDAO.findByDeptId((String) employeeDeptIdReader.input());
 		ConsoleWriter.showEmployees(searchedEmployees);
 	}
 }

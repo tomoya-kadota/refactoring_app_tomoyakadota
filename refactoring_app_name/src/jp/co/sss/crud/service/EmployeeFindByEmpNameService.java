@@ -21,7 +21,8 @@ public class EmployeeFindByEmpNameService {
 	public static void findByEmpName() throws SystemErrorException {
 
 		EmployeeDAO employeeDAO = new EmployeeDAO();
-		List<Employee> searchedEmployees = employeeDAO.findByEmpName(EmployeeNameReader.input());
+		EmployeeNameReader employeeNameReader = new EmployeeNameReader();
+		List<Employee> searchedEmployees = employeeDAO.findByEmpName((String) employeeNameReader.input());
 		ConsoleWriter.showEmployees(searchedEmployees);
 	}
 }

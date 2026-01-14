@@ -1,25 +1,29 @@
 package jp.co.sss.crud.io;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-import jp.co.sss.crud.exception.SystemErrorException;
 import jp.co.sss.crud.util.ConstantMsg;
+import jp.co.sss.crud.util.ConstantValue;
 
-public class EmployeeGenderReader {
+public class EmployeeGenderReader implements IConsoleReader{
 
-	public static String input() throws SystemErrorException {
-
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		String gender = "";
-
-		try {
-			gender = br.readLine();
-		} catch (IOException e) {
-			throw new SystemErrorException(ConstantMsg.SYSTEM_ERROR_MSG, e);
-		}
-
-		return gender;
+	@Override
+	public String getErrorMsg() {
+		return ConstantMsg.GENDER_ERROR_MSG;
 	}
+
+	@Override
+	public boolean isValid(String inputString) {
+		Pattern p = Pattern.compile(ConstantValue.GENDER_PATTERN);
+		Matcher m = p.matcher(inputString);
+		return m.find();
+	}
+
+	@Override
+	public boolean isParseInt() {
+		return true;
+	}
+
+
 }
