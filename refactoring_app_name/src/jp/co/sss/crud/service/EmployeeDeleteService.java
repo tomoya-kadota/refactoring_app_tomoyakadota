@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 import jp.co.sss.crud.db.EmployeeDAO;
+import jp.co.sss.crud.exception.SystemErrorException;
 import jp.co.sss.crud.io.ConsoleWriter;
 import jp.co.sss.crud.util.ConstantValue;
 
@@ -16,7 +17,7 @@ public class EmployeeDeleteService {
 	 * @throws SQLException           DB処理でエラーが発生した場合に送出
 	 * @throws IOException            入力処理でエラーが発生した場合に送出
 	 */
-	public static void delete() {
+	public static void delete() throws SystemErrorException{
 
 		EmployeeDAO employeeDAO = new EmployeeDAO();
 		

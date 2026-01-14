@@ -15,7 +15,9 @@ import java.util.List;
 
 import jp.co.sss.crud.dto.Department;
 import jp.co.sss.crud.dto.Employee;
+import jp.co.sss.crud.exception.SystemErrorException;
 import jp.co.sss.crud.io.ConsoleWriter;
+import jp.co.sss.crud.util.ConstantMsg;
 import jp.co.sss.crud.util.ConstantSQL;
 import jp.co.sss.crud.util.ConstantValue;
 
@@ -27,7 +29,7 @@ public class EmployeeDAO {
 	 * @throws ClassNotFoundException ドライバクラスが不在の場合に送出
 	 * @throws SQLException           DB処理でエラーが発生した場合に送出
 	 */
-	public List<Employee> findAll() throws ClassNotFoundException, SQLException, ParseException {
+	public List<Employee> findAll() throws SystemErrorException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		ResultSet resultSet = null;
@@ -65,13 +67,22 @@ public class EmployeeDAO {
 				employees.add(employee);
 			}
 
+		} catch (ClassNotFoundException | SQLException | ParseException e) {
+			throw new SystemErrorException(ConstantMsg.SYSTEM_ERROR_MSG, e);
+
 		} finally {
-			// ResultSetをクローズ
-			DBManager.closeResultSet(resultSet);
-			// Statementをクローズ
-			DBManager.closePreparedStatement(preparedStatement);
-			// DBとの接続を切断
-			DBManager.closeDBConnection(connection);
+
+			try {
+				// ResultSetをクローズ
+				DBManager.closeResultSet(resultSet);
+				// Statementをクローズ
+				DBManager.closePreparedStatement(preparedStatement);
+				// DBとの接続を切断
+				DBManager.closeDBConnection(connection);
+			} catch (SQLException e) {
+				throw new SystemErrorException(ConstantMsg.SYSTEM_ERROR_MSG, e);
+			}
+
 		}
 		return employees;
 	}
@@ -83,8 +94,7 @@ public class EmployeeDAO {
 	 * @throws SQLException           DB処理でエラーが発生した場合に送出
 	 * @throws IOException            入力処理でエラーが発生した場合に送出
 	 */
-	public List<Employee> findByEmpName(String searchName)
-			throws ClassNotFoundException, SQLException, IOException, ParseException {
+	public List<Employee> findByEmpName(String searchName) throws SystemErrorException {
 
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -129,14 +139,21 @@ public class EmployeeDAO {
 
 				employees.add(employee);
 			}
+		} catch (ClassNotFoundException | SQLException | ParseException e) {
+			throw new SystemErrorException(ConstantMsg.SYSTEM_ERROR_MSG, e);
 
 		} finally {
-			// クローズ処理
-			DBManager.closeResultSet(resultSet);
-			// Statementをクローズ
-			DBManager.closePreparedStatement(preparedStatement);
-			// DBとの接続を切断
-			DBManager.closeDBConnection(connection);
+
+			try {
+				// ResultSetをクローズ
+				DBManager.closeResultSet(resultSet);
+				// Statementをクローズ
+				DBManager.closePreparedStatement(preparedStatement);
+				// DBとの接続を切断
+				DBManager.closeDBConnection(connection);
+			} catch (SQLException e) {
+				throw new SystemErrorException(ConstantMsg.SYSTEM_ERROR_MSG, e);
+			}
 		}
 		return employees;
 	}
@@ -148,8 +165,7 @@ public class EmployeeDAO {
 	 * @throws SQLException           DB処理でエラーが発生した場合に送出
 	 * @throws IOException            入力処理でエラーが発生した場合に送出
 	 */
-	public List<Employee> findByDeptId(String deptId)
-			throws ClassNotFoundException, SQLException, IOException, ParseException {
+	public List<Employee> findByDeptId(String deptId) throws SystemErrorException {
 
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -193,13 +209,24 @@ public class EmployeeDAO {
 
 				employees.add(employee);
 			}
+
+		} catch (ClassNotFoundException | SQLException | ParseException e) {
+			throw new SystemErrorException(ConstantMsg.SYSTEM_ERROR_MSG, e);
+
 		} finally {
-			// クローズ処理
-			DBManager.closeResultSet(resultSet);
-			// Statementをクローズ
-			DBManager.closePreparedStatement(preparedStatement);
-			// DBとの接続を切断
-			DBManager.closeDBConnection(connection);
+
+			try {
+				// クローズ処理
+				DBManager.closeResultSet(resultSet);
+				// Statementをクローズ
+				DBManager.closePreparedStatement(preparedStatement);
+				// DBとの接続を切断
+				DBManager.closeDBConnection(connection);
+
+			} catch (SQLException e) {
+				throw new SystemErrorException(ConstantMsg.SYSTEM_ERROR_MSG, e);
+			}
+
 		}
 		return employees;
 	}
@@ -216,8 +243,7 @@ public class EmployeeDAO {
 	 * @throws IOException            入力処理でエラーが発生した場合に送出
 	 * @throws ParseException
 	 */
-	public void insert(String empName, String gender, String birthday, String deptId)
-			throws ClassNotFoundException, SQLException, IOException, ParseException {
+	public void insert(String empName, String gender, String birthday, String deptId) throws SystemErrorException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		try {
@@ -237,10 +263,20 @@ public class EmployeeDAO {
 			// SQL文を実行
 			preparedStatement.executeUpdate();
 
+		} catch (ClassNotFoundException | SQLException | ParseException e) {
+			throw new SystemErrorException(ConstantMsg.SYSTEM_ERROR_MSG, e);
 
 		} finally {
-			DBManager.closePreparedStatement(preparedStatement);
-			DBManager.closeDBConnection(connection);
+			try {
+				// Statementをクローズ
+				DBManager.closePreparedStatement(preparedStatement);
+				// DBとの接続を切断
+				DBManager.closeDBConnection(connection);
+			} catch (SQLException e) {
+				throw new SystemErrorException(ConstantMsg.SYSTEM_ERROR_MSG, e);
+
+			}
+
 		}
 	}
 
@@ -253,7 +289,7 @@ public class EmployeeDAO {
 	 * @throws IOException            入力処理でエラーが発生した場合に送出
 	 * @throws ParseException
 	 */
-	public Integer update(String empId) throws ClassNotFoundException, SQLException, IOException, ParseException {
+	public Integer update(String empId) throws SystemErrorException {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -264,7 +300,7 @@ public class EmployeeDAO {
 
 			// ステートメントの作成
 			preparedStatement = connection.prepareStatement(ConstantSQL.SQL_UPDATE);
-			
+
 			// 社員名を入力
 			ConsoleWriter.showInputEmpName();
 			String empName = br.readLine();
@@ -289,11 +325,19 @@ public class EmployeeDAO {
 			// SQL文の実行(失敗時は戻り値0)
 			return preparedStatement.executeUpdate();
 
+		} catch (ClassNotFoundException | SQLException | IOException | ParseException e) {
+			throw new SystemErrorException(ConstantMsg.SYSTEM_ERROR_MSG, e);
+
 		} finally {
-			// クローズ処理
-			DBManager.closePreparedStatement(preparedStatement);
-			// DBとの接続を切断
-			DBManager.closeDBConnection(connection);
+			try {
+				// クローズ処理
+				DBManager.closePreparedStatement(preparedStatement);
+				// DBとの接続を切断
+				DBManager.closeDBConnection(connection);
+			} catch (SQLException e) {
+				throw new SystemErrorException(ConstantMsg.SYSTEM_ERROR_MSG, e);
+
+			}
 		}
 	}
 
@@ -304,7 +348,7 @@ public class EmployeeDAO {
 	 * @throws SQLException           DB処理でエラーが発生した場合に送出
 	 * @throws IOException            入力処理でエラーが発生した場合に送出
 	 */
-	public Integer delete() {
+	public Integer delete() throws SystemErrorException {
 
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;
@@ -320,26 +364,22 @@ public class EmployeeDAO {
 
 			// 社員IDをバインド
 			preparedStatement.setInt(1, Integer.parseInt(empId));
-			
+
 			// SQL文の実行(失敗時は戻り値0)
 			return preparedStatement.executeUpdate();
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-			return ConstantValue.DELETE_FAILURE;
 
-		}
+		} catch (ClassNotFoundException | SQLException | IOException e) {
+			throw new SystemErrorException(ConstantMsg.SYSTEM_ERROR_MSG, e);
 
-		finally {
-			// Statementをクローズ
+		} finally {
 			try {
+				// Statementをクローズ
 				DBManager.closePreparedStatement(preparedStatement);
+				// DBとの接続を切断
 				DBManager.closeDBConnection(connection);
 			} catch (SQLException e) {
-				e.printStackTrace();
+				throw new SystemErrorException(ConstantMsg.SYSTEM_ERROR_MSG, e);
 			}
-			// DBとの接続を切断
 		}
-		
 	}
 }

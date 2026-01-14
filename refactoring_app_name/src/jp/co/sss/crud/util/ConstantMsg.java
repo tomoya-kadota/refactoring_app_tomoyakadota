@@ -53,6 +53,8 @@ public class ConstantMsg {
 	/** 社員情報の削除を実施した場合に表示するメッセージ */
 	public static final String EMPLOYEE_DELETE_COMPLETE = "社員情報を削除しました";
 	/** システム終了時に表示するメッセージ */
-	public static final String SYSTEM_SHUTDOWN ="システムを終了します。";
+	public static final String SYSTEM_SHUTDOWN = "システムを終了します。";
+	/** 検査例外が発生した場合に表示するメッセージ */
+	public static final String SYSTEM_ERROR_MSG = "システムエラーです。";
 
 }
